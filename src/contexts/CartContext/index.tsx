@@ -13,7 +13,7 @@ interface iCartContext {
 export const CartContext = createContext<iCartContext>({} as iCartContext);
 
 export const CartProvider = ({ children }: iContext) => {
-  const { token, loading, setLoading } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const CartProvider = ({ children }: iContext) => {
       }
     }
     getProducts();
-  }, []);
+  }, [token, products]);
   return (
     <CartContext.Provider value={{ products }}>{children}</CartContext.Provider>
   );
