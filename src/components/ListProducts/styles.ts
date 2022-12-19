@@ -13,7 +13,7 @@ export const UlStyle = styled.ul`
 
   @media (min-width: 1024px) {
     max-width: 70%;
-    overflow-y: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-wrap: wrap;
   }

@@ -19,7 +19,11 @@ export const CartProvider = ({ children }: iContext) => {
   useEffect(() => {
     async function getProducts() {
       try {
-        const response = await api.get("products");
+        const response = await api.get("products", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setProducts(response.data);
       } catch (err) {
         console.log(err);
