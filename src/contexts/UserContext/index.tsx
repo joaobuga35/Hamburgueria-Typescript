@@ -22,7 +22,6 @@ interface iLoginForm {
 
 interface iUserContextType {
   navigate: NavigateFunction;
-  loading: boolean;
   userRegister: (form: iRegisterForm) => Promise<void>;
   userLogin: (form: iLoginForm) => Promise<void>;
   token?: string | null;
@@ -34,7 +33,6 @@ export const UserContext = createContext<iUserContextType>(
 );
 
 export const UserProvider = ({ children }: iContext) => {
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
 
@@ -111,7 +109,13 @@ export const UserProvider = ({ children }: iContext) => {
 
   return (
     <UserContext.Provider
-      value={{ navigate, loading, userRegister, userLogin, token, remove }}
+      value={{
+        navigate,
+        userRegister,
+        userLogin,
+        token,
+        remove,
+      }}
     >
       {children}
     </UserContext.Provider>
