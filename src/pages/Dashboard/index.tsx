@@ -1,7 +1,10 @@
+import { HeaderDash } from "../../components/HeaderDashboard";
+import { DivDash } from "./styles";
+
 export const Dashboard = () => {
   return (
-    <div>
-      <h1>Page Dashboard</h1>
-    </div>
+    <DivDash>
+      <HeaderDash></HeaderDash>
+    </DivDash>
   );
 };
