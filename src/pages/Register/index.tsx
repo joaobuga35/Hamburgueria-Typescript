@@ -8,6 +8,8 @@ import { ButtonDefault } from "../../styles/button";
 import { DivRegister } from "./styles";
 import { registerSchema } from "./registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
 
 interface iRegisterForm {
   name: string;
@@ -17,6 +19,7 @@ interface iRegisterForm {
 }
 
 export const Register = () => {
+  const { userRegister } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -26,8 +29,8 @@ export const Register = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const submit: SubmitHandler<iRegisterForm> = (data) => {
-    console.log(data);
+  const submit: SubmitHandler<iRegisterForm> = async (data) => {
+    await userRegister(data);
   };
   return (
     <DivRegister>
@@ -51,6 +54,7 @@ export const Register = () => {
             placeholder={"nome"}
             register={register("name")}
           />
+          {errors.name && <p className="errors">{errors.name.message}</p>}
         </DivInputBox>
         <DivInputBox>
           <Input
@@ -59,6 +63,7 @@ export const Register = () => {
             placeholder={"email"}
             register={register("email")}
           />
+          {errors.email && <p className="errors">{errors.email.message}</p>}
         </DivInputBox>
         <DivInputBox>
           <Input
@@ -67,6 +72,9 @@ export const Register = () => {
             placeholder={"senha"}
             register={register("password")}
           />
+          {errors.password && (
+            <p className="errors">{errors.password.message}</p>
+          )}
         </DivInputBox>
         <DivInputBox>
           <Input
@@ -75,6 +83,9 @@ export const Register = () => {
             placeholder={"confirme sua senha"}
             register={register("confirmPassword")}
           />
+          {errors.confirmPassword && (
+            <p className="errors">{errors.confirmPassword.message}</p>
+          )}
         </DivInputBox>
         <ButtonDefault type="submit" colorBtn={"buttoGrey"} width={"100%"}>
           Cadastrar
