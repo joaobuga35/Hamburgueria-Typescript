@@ -2,7 +2,6 @@ import { LiStyle } from "../../components/Card/styles";
 import { HeaderDash } from "../../components/HeaderDashboard";
 import { UlStyle } from "../../components/ListProducts/styles";
 import { DivDash } from "./styles";
-import hamburger from "../../assets/hamburger.svg";
 import { ButtonDefault } from "../../styles/button";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
