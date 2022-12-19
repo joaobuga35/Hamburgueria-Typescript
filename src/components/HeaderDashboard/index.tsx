@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const HeaderDash = () => {
   return (
-    <>
+    <div className="divHeader">
       <HeaderMain>
         <img src={logoMain} alt="logo da hamburgueria" />
         <div className="divIcons">
@@ -33,6 +33,6 @@ export const HeaderDash = () => {
           </Link>
         </div>
       </HeaderMain>
-    </>
+    </div>
   );
 };

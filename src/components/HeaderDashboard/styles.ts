@@ -5,7 +5,7 @@ export const HeaderMain = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--gray-0);
+  background-color: var(--color-background);
 
   .divIcons {
     display: flex;
@@ -26,5 +26,10 @@ export const HeaderMain = styled.header`
   a {
     text-decoration: none;
     color: var(--gray-300);
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 100rem;
+    margin: 0 auto;
   }
 `;
