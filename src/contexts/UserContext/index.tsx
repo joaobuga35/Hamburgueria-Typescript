@@ -15,10 +15,16 @@ interface iRegisterForm {
   confirmPassword: string;
 }
 
+interface iLoginForm {
+  email: string;
+  password: string;
+}
+
 interface iUserContextType {
   navigate: NavigateFunction;
   loading: boolean;
   userRegister: (form: iRegisterForm) => Promise<void>;
+  userLogin: (form: iLoginForm) => Promise<void>;
 }
 
 export const UserContext = createContext<iUserContextType>(
@@ -28,6 +34,40 @@ export const UserContext = createContext<iUserContextType>(
 export const UserProvider = ({ children }: iContext) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const userLogin = async (form: iLoginForm) => {
+    const load = toast.loading("Aguarde um instante...");
+    try {
+      const response = await api.post("login", form);
+      localStorage.setItem("@TOKEN", response.data.accessToken);
+      toast.update(load, {
+        render: "Logado com sucesso!",
+        type: "success",
+        isLoading: false,
+        theme: "light",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/dashboard");
+    } catch (error) {
+      toast.update(load, {
+        render: "Email ou senha incorretos!",
+        type: "error",
+        isLoading: false,
+        theme: "light",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   const userRegister = async (form: iRegisterForm) => {
     const load = toast.loading("Aguarde um instante...");
@@ -63,7 +103,9 @@ export const UserProvider = ({ children }: iContext) => {
   };
 
   return (
-    <UserContext.Provider value={{ navigate, loading, userRegister }}>
+    <UserContext.Provider
+      value={{ navigate, loading, userRegister, userLogin }}
+    >
       {children}
     </UserContext.Provider>
   );
