@@ -6,10 +6,13 @@ import { ShoppingCart } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export const HeaderDash = () => {
+  const { remove } = useContext(UserContext);
   return (
-    <>
+    <div className="divHeader">
       <HeaderMain>
         <img src={logoMain} alt="logo da hamburgueria" />
         <div className="divIcons">
@@ -28,11 +31,11 @@ export const HeaderDash = () => {
             </Badge>
           </IconButton>
 
-          <Link to={"/"}>
+          <Link to={"/"} onClick={() => remove()}>
             <ExitToAppIcon className="cartIcon" />
           </Link>
         </div>
       </HeaderMain>
-    </>
+    </div>
   );
 };

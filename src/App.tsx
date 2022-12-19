@@ -3,6 +3,7 @@ import { UserProvider } from "./contexts/UserContext";
 import { RoutesMain } from "./routes";
 import Global from "./styles/Global";
 import { ToastContainer } from "react-toastify";
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
       />
       <Global />
       <UserProvider>
-        <RoutesMain />
+        <CartProvider>
+          <RoutesMain />
+        </CartProvider>
       </UserProvider>
     </>
   );

@@ -25,6 +25,8 @@ interface iUserContextType {
   loading: boolean;
   userRegister: (form: iRegisterForm) => Promise<void>;
   userLogin: (form: iLoginForm) => Promise<void>;
+  token?: string | null;
+  remove: () => void;
 }
 
 export const UserContext = createContext<iUserContextType>(
@@ -34,6 +36,11 @@ export const UserContext = createContext<iUserContextType>(
 export const UserProvider = ({ children }: iContext) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const token = localStorage.getItem("@TOKEN");
+
+  const remove = () => {
+    localStorage.removeItem("@TOKEN");
+  };
 
   const userLogin = async (form: iLoginForm) => {
     const load = toast.loading("Aguarde um instante...");
@@ -104,7 +111,7 @@ export const UserProvider = ({ children }: iContext) => {
 
   return (
     <UserContext.Provider
-      value={{ navigate, loading, userRegister, userLogin }}
+      value={{ navigate, loading, userRegister, userLogin, token, remove }}
     >
       {children}
     </UserContext.Provider>
