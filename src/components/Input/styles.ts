@@ -37,5 +37,12 @@ export const DivInputBox = styled.div`
     background-color: #fff;
     border-left: 1px solid var(--color-primary);
     border-right: 1px solid var(--color-primary);
+    letter-spacing: 0.2em;
+  }
+
+  .errors {
+    display: flex;
+    font-size: 1.2rem;
+    color: var(--color-secundary);
   }
 `;
