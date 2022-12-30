@@ -6,11 +6,14 @@ import { ButtonDefault } from "../../styles/button";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { ModalCart } from "../../components/Modal";
 
 export const Dashboard = () => {
-  const { products } = useContext(CartContext);
+  const { products, modal, setModal } = useContext(CartContext);
+
   return (
     <DivDash>
+      {modal ? <ModalCart></ModalCart> : null}
       <HeaderDash></HeaderDash>
       <main>
         <UlStyle>

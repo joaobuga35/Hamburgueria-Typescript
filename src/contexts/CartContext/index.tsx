@@ -8,13 +8,16 @@ interface iContext {
 
 interface iCartContext {
   products: any[];
+  modal: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CartContext = createContext<iCartContext>({} as iCartContext);
 
 export const CartProvider = ({ children }: iContext) => {
-  const { token } = useContext(UserContext);
+  const { token, navigate } = useContext(UserContext);
   const [products, setProducts] = useState([]);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     async function getProducts() {
@@ -25,6 +28,9 @@ export const CartProvider = ({ children }: iContext) => {
           },
         });
         setProducts(response.data);
+        if (token) {
+          navigate("/dashboard");
+        }
       } catch (err) {
         console.log(err);
       }
@@ -32,6 +38,8 @@ export const CartProvider = ({ children }: iContext) => {
     getProducts();
   }, [token, products]);
   return (
-    <CartContext.Provider value={{ products }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ products, modal, setModal }}>
+      {children}
+    </CartContext.Provider>
   );
 };
