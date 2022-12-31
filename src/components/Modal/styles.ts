@@ -14,13 +14,14 @@ export const ModalWrapper = styled.div`
 export const ModalContainer = styled.div`
   margin-top: 17rem;
   width: 30rem;
-  height: 2rem;
+  height: 23rem;
   box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
   border-radius: 0.4rem;
   z-index: 10;
 
   .divNull {
     width: 100%;
+    height: 23rem;
   }
 `;
 
