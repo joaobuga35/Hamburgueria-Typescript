@@ -17,6 +17,10 @@ export const CartItem = styled.li`
   .divTitleItem {
     display: flex;
     gap: 4rem;
+
+    @media (min-width: 1024px) {
+      gap: 14rem;
+    }
   }
 
   .btnTrash {

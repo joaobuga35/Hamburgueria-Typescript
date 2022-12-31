@@ -20,6 +20,10 @@ export const ModalContainer = styled.div`
 
   .divNull {
     width: 100%;
+
+    @media (min-width: 1024px) {
+      width: 42rem;
+    }
   }
 
   .sectionList {
@@ -50,6 +54,10 @@ export const ModalContainer = styled.div`
         color: var(--gray-300);
       }
     }
+
+    @media (min-width: 1024px) {
+      width: 42rem;
+    }
   }
 `;
 
@@ -65,6 +73,10 @@ export const DivTitleModal = styled.div`
 
   h2 {
     font-size: 1.7rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 42rem;
   }
 `;
 

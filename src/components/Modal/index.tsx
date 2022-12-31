@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import imgNull from "../../assets/divNull.svg";
-import hamburguer from "../../assets/hamburger.svg";
 import { FaTrash } from "react-icons/fa";
 import { ButtonDefault } from "../../styles/button";
 import {

@@ -17,7 +17,7 @@ interface iCartContext {
   removeOne: (element: iProducts, elementId: number) => void;
   removeAll: () => void;
   itemCart: iProducts[];
-  totalValue: () => number;
+  totalValue: () => string | 0;
 }
 
 interface iProducts {
@@ -103,7 +103,7 @@ export const CartProvider = ({ children }: iContext) => {
       );
       setValues(total);
     }, [itemCart]);
-    return values;
+    return values.toFixed(2);
   };
 
   useEffect(() => {
