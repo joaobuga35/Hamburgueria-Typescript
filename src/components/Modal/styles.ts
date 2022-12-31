@@ -14,14 +14,50 @@ export const ModalWrapper = styled.div`
 export const ModalContainer = styled.div`
   margin-top: 17rem;
   width: 30rem;
-  height: 23rem;
   box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
   border-radius: 0.4rem;
   z-index: 10;
 
   .divNull {
     width: 100%;
-    height: 23rem;
+
+    @media (min-width: 1024px) {
+      width: 42rem;
+    }
+  }
+
+  .sectionList {
+    padding: 2rem;
+    height: 32rem;
+    width: 100%;
+    background-color: var(--gray-0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .divBtnRemoveAll {
+      margin-top: 1.5rem;
+    }
+
+    .divTotal {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+
+      h3 {
+        font-size: 1.4rem;
+        color: var(--gray-600);
+      }
+
+      span {
+        font-size: 1.4rem;
+        color: var(--gray-300);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      width: 42rem;
+    }
   }
 `;
 
@@ -37,6 +73,10 @@ export const DivTitleModal = styled.div`
 
   h2 {
     font-size: 1.7rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 42rem;
   }
 `;
 
