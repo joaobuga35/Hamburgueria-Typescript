@@ -8,8 +8,10 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { CartContext } from "../../contexts/CartContext";
 
 export const HeaderDash = () => {
+  const { modal, setModal, itemCart } = useContext(CartContext);
   const { remove } = useContext(UserContext);
   return (
     <div className="divHeader">
@@ -22,11 +24,8 @@ export const HeaderDash = () => {
           >
             <BiSearchAlt2 className="cartIcon" />
           </IconButton>
-          <IconButton
-            className="iconButton"
-            onClick={() => console.log("fui clicado")}
-          >
-            <Badge badgeContent={4} color="success">
+          <IconButton className="iconButton" onClick={() => setModal(true)}>
+            <Badge badgeContent={itemCart.length} color="success">
               <ShoppingCart className="cartIcon" />
             </Badge>
           </IconButton>
