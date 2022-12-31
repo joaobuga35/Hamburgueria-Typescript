@@ -39,24 +39,36 @@ export const ModalCart = () => {
             alt="Não existem compras no carrinho"
           />
         ) : (
-          <ListCart>
-            {itemCart.map((elem) => (
-              <CartItem key={elem.id}>
-                <img src={elem.img} alt="" />
-                <h2>{elem.name}</h2>
-                <button onClick={() => removeProducts(elem.id)}>
-                  <FaTrash className="trash" />
-                </button>
-                <div>
-                  <button onClick={() => removeOne(elem, elem.id)}>-</button>
-                  <span>{elem.quant}</span>
-                  <button onClick={() => add(elem, elem.id)}>+</button>
-                </div>
-              </CartItem>
-            ))}
-            <div>
-              <div>
-                Total: <span>R$ {totalValue()}</span>
+          <section className="sectionList">
+            <ListCart>
+              {itemCart.map((elem) => (
+                <CartItem key={elem.id}>
+                  <img src={elem.img} alt="" />
+                  <div className="divAlign">
+                    <div className="divTitleItem">
+                      <h2>{elem.name}</h2>
+                      <button
+                        className="btnTrash"
+                        onClick={() => removeProducts(elem.id)}
+                      >
+                        <FaTrash className="trash" />
+                      </button>
+                    </div>
+                    <div className="divBtnAddRemove">
+                      <button onClick={() => removeOne(elem, elem.id)}>
+                        -
+                      </button>
+                      <span>{elem.quant}</span>
+                      <button onClick={() => add(elem, elem.id)}>+</button>
+                    </div>
+                  </div>
+                </CartItem>
+              ))}
+            </ListCart>
+            <div className="divBtnRemoveAll">
+              <div className="divTotal">
+                <h3>Total </h3>
+                <span>R$ {totalValue()}</span>
               </div>
               <ButtonDefault
                 onClick={() => removeAll()}
@@ -66,7 +78,7 @@ export const ModalCart = () => {
                 Remover Todos{" "}
               </ButtonDefault>
             </div>
-          </ListCart>
+          </section>
         )}
       </ModalContainer>
     </ModalWrapper>
