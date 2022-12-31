@@ -11,7 +11,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { CartContext } from "../../contexts/CartContext";
 
 export const HeaderDash = () => {
-  const { modal, setModal } = useContext(CartContext);
+  const { modal, setModal, itemCart } = useContext(CartContext);
   const { remove } = useContext(UserContext);
   return (
     <div className="divHeader">
@@ -25,7 +25,7 @@ export const HeaderDash = () => {
             <BiSearchAlt2 className="cartIcon" />
           </IconButton>
           <IconButton className="iconButton" onClick={() => setModal(true)}>
-            <Badge badgeContent={4} color="success">
+            <Badge badgeContent={itemCart.length} color="success">
               <ShoppingCart className="cartIcon" />
             </Badge>
           </IconButton>

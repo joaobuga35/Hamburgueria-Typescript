@@ -9,7 +9,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { ModalCart } from "../../components/Modal";
 
 export const Dashboard = () => {
-  const { products, modal, setModal } = useContext(CartContext);
+  const { products, modal, setModal, add } = useContext(CartContext);
 
   return (
     <DivDash>
@@ -30,6 +30,7 @@ export const Dashboard = () => {
                   id={elem.id}
                   width={"10.6rem"}
                   colorBtn={"buttonGreen"}
+                  onClick={() => add(elem, elem.id)}
                 >
                   Adicionar
                 </ButtonDefault>

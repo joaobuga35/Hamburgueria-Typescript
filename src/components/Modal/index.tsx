@@ -14,7 +14,17 @@ import { ListCart } from "../ListCart/styles";
 import { CartItem } from "../CartItem/styles";
 
 export const ModalCart = () => {
-  const { modal, setModal } = useContext(CartContext);
+  const {
+    modal,
+    setModal,
+    products,
+    itemCart,
+    add,
+    removeOne,
+    removeProducts,
+    removeAll,
+    totalValue,
+  } = useContext(CartContext);
   return (
     <ModalWrapper>
       <ModalContainer>
@@ -22,33 +32,42 @@ export const ModalCart = () => {
           <h2>Carrinho de Compras</h2>
           <ButtonCloseModal onClick={() => setModal(false)}>X</ButtonCloseModal>
         </DivTitleModal>
-        {/* <img
-          className="divNull"
-          src={imgNull}
-          alt="Não existem compras no carrinho"
-        /> */}
-        <ListCart>
-          <CartItem>
-            <img src={hamburguer} alt="" />
-            <h2>Hamburguer</h2>
-            <button>
-              <FaTrash className="trash" />
-            </button>
+        {itemCart.length === 0 ? (
+          <img
+            className="divNull"
+            src={imgNull}
+            alt="Não existem compras no carrinho"
+          />
+        ) : (
+          <ListCart>
+            {itemCart.map((elem) => (
+              <CartItem key={elem.id}>
+                <img src={elem.img} alt="" />
+                <h2>{elem.name}</h2>
+                <button onClick={() => removeProducts(elem.id)}>
+                  <FaTrash className="trash" />
+                </button>
+                <div>
+                  <button onClick={() => removeOne(elem, elem.id)}>-</button>
+                  <span>{elem.quant}</span>
+                  <button onClick={() => add(elem, elem.id)}>+</button>
+                </div>
+              </CartItem>
+            ))}
             <div>
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
+              <div>
+                Total: <span>R$ {totalValue()}</span>
+              </div>
+              <ButtonDefault
+                onClick={() => removeAll()}
+                colorBtn={"buttoGrey"}
+                width={"100%"}
+              >
+                Remover Todos{" "}
+              </ButtonDefault>
             </div>
-          </CartItem>
-          <div>
-            <div>
-              Total: <span>R$ 50.00</span>
-            </div>
-            <ButtonDefault colorBtn={"buttoGrey"} width={"100%"}>
-              Remover Todos{" "}
-            </ButtonDefault>
-          </div>
-        </ListCart>
+          </ListCart>
+        )}
       </ModalContainer>
     </ModalWrapper>
   );
