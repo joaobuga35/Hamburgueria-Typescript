@@ -11,6 +11,7 @@ import {
 } from "./styles";
 import { ListCart } from "../ListCart/styles";
 import { CartItem } from "../CartItem/styles";
+import "animate.css";
 
 export const ModalCart = () => {
   const {
@@ -26,7 +27,7 @@ export const ModalCart = () => {
   } = useContext(CartContext);
   return (
     <ModalWrapper>
-      <ModalContainer>
+      <ModalContainer className="animate__animated animate__slideInDown">
         <DivTitleModal>
           <h2>Carrinho de Compras</h2>
           <ButtonCloseModal onClick={() => setModal(false)}>X</ButtonCloseModal>

@@ -10,6 +10,7 @@ import { registerSchema } from "./registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
+import "animate.css";
 
 interface iRegisterForm {
   name: string;
@@ -33,7 +34,7 @@ export const Register = () => {
     await userRegister(data);
   };
   return (
-    <DivRegister>
+    <DivRegister className="animate__animated animate__zoomInDown">
       <Header></Header>
       <FormStyle
         noValidate

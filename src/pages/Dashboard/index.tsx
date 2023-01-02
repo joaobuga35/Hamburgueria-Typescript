@@ -7,12 +7,13 @@ import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { ModalCart } from "../../components/Modal";
+import "animate.css";
 
 export const Dashboard = () => {
   const { products, modal, setModal, add } = useContext(CartContext);
 
   return (
-    <DivDash>
+    <DivDash className="animate__animated animate__zoomInDown">
       {modal ? <ModalCart></ModalCart> : null}
       <HeaderDash></HeaderDash>
       <main>
