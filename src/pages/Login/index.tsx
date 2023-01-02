@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { registerSchema } from "./registerSchemaLogin";
+import "animate.css";
 
 interface iLoginForm {
   email: string;
@@ -34,7 +35,7 @@ export const Login = () => {
     reset();
   };
   return (
-    <DivLogin>
+    <DivLogin className="animate__animated animate__zoomInDown">
       <Header></Header>
       <FormStyle
         noValidate

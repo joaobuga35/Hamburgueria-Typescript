@@ -40,7 +40,6 @@ export const CartProvider = ({ children }: iContext) => {
 
   const add = (element: iProducts, elementId: number) => {
     const newProducts = itemCart.find((elem) => elem.id === elementId);
-
     if (newProducts) {
       const index = itemCart.findIndex((elem) => elem.id === elementId);
       const cartProducts = itemCart.splice(index, 1);

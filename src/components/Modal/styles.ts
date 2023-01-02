@@ -8,13 +8,12 @@ export const ModalWrapper = styled.div`
   justify-content: center;
   position: fixed;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const ModalContainer = styled.div`
   margin-top: 17rem;
   width: 30rem;
-  box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.5);
   border-radius: 0.4rem;
   z-index: 10;
 

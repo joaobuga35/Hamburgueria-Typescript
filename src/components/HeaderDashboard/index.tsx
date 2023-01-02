@@ -1,6 +1,5 @@
 import { HeaderMain } from "./styles";
 import logoMain from "../../assets/logo.svg";
-import { BiSearchAlt2 } from "react-icons/bi";
 import { IconButton } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
@@ -18,12 +17,6 @@ export const HeaderDash = () => {
       <HeaderMain>
         <img src={logoMain} alt="logo da hamburgueria" />
         <div className="divIcons">
-          <IconButton
-            className="iconButton"
-            onClick={() => console.log("fui clicado")}
-          >
-            <BiSearchAlt2 className="cartIcon" />
-          </IconButton>
           <IconButton className="iconButton" onClick={() => setModal(true)}>
             <Badge badgeContent={itemCart.length} color="success">
               <ShoppingCart className="cartIcon" />
